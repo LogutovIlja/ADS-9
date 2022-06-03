@@ -6,5 +6,27 @@
 #include  "bst.h"
 
 BST<std::string> makeTree(const char* filename) {
-  // поместите сюда свой код
+  system("chcp 1251");
+    system("cls");
+    BST<std::string> Ttree;
+    std::ifstream file(filename);
+
+    if (!file) {
+        std::cout << "Ошибка" << std::endl;
+        return Ttree;
+    }
+    char Bukv;
+    std::string slov = "";
+    while (!file.eof()) {
+        ch = file.get();
+        if ((Bukv >= 65 && Bukv <= 90) || (Bukv >= 97 && Bukv <= 122)) {
+            slov += tolower(Bukv);
+        } else {
+            Ttree.add(slov);
+            slov = "";
+        }
+    }
+
+    file.close();
+    return Ttree;
 }
